@@ -139,7 +139,7 @@
       return {song, nodes, sources: new Set(), mix, tonal, master, send,
         rng: random(song.seed ^ 0xD1B54A35), step: 0, next: 0, timer: null, stopped: false};
     }
-    level() { return .96 * Math.pow(.45, 1.4) * (4 / 3); }
+    level() { return .96 * Math.pow(.45, 1.4) * (4 / 3) * (4 / 3); }
     setHidden(value) {
       this.hidden = value;
       if (value) { this.epoch++; this.retire(); this.context?.suspend(); }
