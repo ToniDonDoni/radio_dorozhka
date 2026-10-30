@@ -1,10 +1,10 @@
 # Radio Dorozhka
 
-A black page with a jagged audio-responsive line, one **New Track** button, and the deployed commit count and short hash in the top-left corner. Sound is synthesized locally using the original procedural minimal / microhouse engine. There are no audio files, external scripts, runtime dependencies, analytics, Discord integration, or volume controls.
+A black page with an upward-flowing jagged line made of deep-blue luminous particles, one **New Dorozhka** button, and the deployed commit count and short hash in the top-left corner. Sound is synthesized locally using the original procedural minimal / microhouse engine. There are no audio files, external scripts, runtime dependencies, analytics, Discord integration, or volume controls.
 
 ## Listen
 
-Press **New Track** once to enable sound. Browsers require a user gesture before playing audio. Press it again to generate a different composition. The page creates a new arrangement every 32 bars and keeps generating while it is open. Browser or operating-system suspension can interrupt playback; press the button again to resume. Each listener gets their own generated music; this is not a shared live stream.
+The page requests audio playback immediately on opening. If the browser permits audible autoplay, music starts without a click. If autoplay is blocked, click anywhere on the page or press a key to start the prepared composition. **New Dorozhka** always generates a different composition. Browser autoplay restrictions cannot be overridden by the page. Its profile name and BPM appear as two subtle lines above the button and update when a new composition starts, including automatic changes. The page creates a new arrangement every 32 bars and keeps generating while it is open. Browser or operating-system suspension can interrupt playback; press the button again to resume. Each listener gets their own generated music; this is not a shared live stream.
 
 ## Publish manually
 
@@ -29,4 +29,6 @@ python3 -m http.server 8080 --directory dist
 
 Open `http://localhost:8080`. The generated `dist/index.html` is a single self-contained file; it can also be opened directly. Build again after editing sources or creating a new commit. A preview before the repository's first commit is identified as `#0 · local`.
 
-`music.js` contains the reusable synthesizer. `index.html` contains the interface and playback controller. The build script inlines the synthesizer, and the Pages workflow uploads only the generated page. Reduced-motion preferences keep the jagged line static.
+`music.js` contains the reusable synthesizer. `index.html` contains the interface and playback controller. The build script inlines the synthesizer, and the Pages workflow uploads only the generated page. The chosen Dust visual uses Canvas to draw a saturated cobalt-blue granular core, a soft blue emission halo and sparse darker outer particles. The geometry belongs to a procedural world strip; travelling along it reveals new corners below and carries existing ones upward at 45 CSS pixels per second. Audio energy subtly changes the width of the granular core. Music changes do not reset the visual strip. The New Dorozhka button sits at the bottom-right, clear of the central line. Reduced-motion preferences keep the drawing static.
+
+The particle treatment is an original implementation inspired by the [particle illustration example](https://github.com/yihui-dev/awesome-opus5-5-videos/blob/main/prompts/ishuagra02-678129.md) in the reference catalog. No external effect library or rendering code is used.

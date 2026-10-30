@@ -102,7 +102,7 @@
         const audio = this.ensureContext();
         await audio.resume();
         if (epoch !== this.epoch || this.hidden || !this.song) return;
-        if (audio.state !== 'running') throw new Error('Press New Track to enable audio.');
+        if (audio.state !== 'running') throw new Error('Press New Dorozhka to enable audio.');
         const session = this.makeSession(this.song);
         this.session = session;
         session.next = audio.currentTime + .065;
@@ -111,7 +111,7 @@
         this.error = '';
       } catch (error) {
         if (epoch !== this.epoch) return;
-        this.error = error.message || 'Press New Track to enable audio.';
+        this.error = error.message || 'Press New Dorozhka to enable audio.';
       }
       this.notify();
     }
