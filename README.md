@@ -1,0 +1,32 @@
+# Radio Dorozhka
+
+A black page with a jagged audio-responsive line, one **New Track** button, and the deployed commit count and short hash in the top-left corner. Sound is synthesized locally using the original procedural minimal / microhouse engine. There are no audio files, external scripts, runtime dependencies, analytics, Discord integration, or volume controls.
+
+## Listen
+
+Press **New Track** once to enable sound. Browsers require a user gesture before playing audio. Press it again to generate a different composition. The page creates a new arrangement every 32 bars and keeps generating while it is open. Browser or operating-system suspension can interrupt playback; press the button again to resume. Each listener gets their own generated music; this is not a shared live stream.
+
+## Publish manually
+
+1. Open this repository on GitHub and select **Actions**.
+2. Select **Publish to GitHub Pages**.
+3. Click **Run workflow**, choose the branch to publish, and confirm **Run workflow**.
+4. Wait for both jobs to finish. The deployment job and the repository's **Settings → Pages** show the public URL.
+
+Publishing runs only when manually requested. A push does not publish the site. GitHub Pages must use **GitHub Actions** as its source under **Settings → Pages**. The initial repository setup configures this setting.
+
+The workflow checks out the selected commit with full history and embeds `#<commit-count> · <short-hash>` into the page. The full commit hash is also in the HTML metadata and the identifier's tooltip. Each build contains its own identification; no live GitHub API requests or caching service worker can change it afterward.
+
+## Develop locally
+
+Use Node.js 22 or newer. No package installation is needed.
+
+```sh
+node scripts/check.mjs
+node scripts/build.mjs
+python3 -m http.server 8080 --directory dist
+```
+
+Open `http://localhost:8080`. The generated `dist/index.html` is a single self-contained file; it can also be opened directly. Build again after editing sources or creating a new commit. A preview before the repository's first commit is identified as `#0 · local`.
+
+`music.js` contains the reusable synthesizer. `index.html` contains the interface and playback controller. The build script inlines the synthesizer, and the Pages workflow uploads only the generated page. Reduced-motion preferences keep the jagged line static.
