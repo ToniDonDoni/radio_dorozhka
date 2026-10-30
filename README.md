@@ -4,7 +4,7 @@ A black page with an upward-flowing jagged line made of deep-blue luminous parti
 
 ## Listen
 
-Press **New Dorozhka** once to enable sound. Browsers require a user gesture before playing audio. Press it again to generate a different composition. Its profile name and BPM appear as two subtle lines above the button and update when a new composition starts, including automatic changes. The page creates a new arrangement every 32 bars and keeps generating while it is open. Browser or operating-system suspension can interrupt playback; press the button again to resume. Each listener gets their own generated music; this is not a shared live stream.
+The page requests audio playback immediately on opening. If the browser permits audible autoplay, music starts without a click. If autoplay is blocked, click anywhere on the page or press a key to start the prepared composition. **New Dorozhka** always generates a different composition. Browser autoplay restrictions cannot be overridden by the page. Its profile name and BPM appear as two subtle lines above the button and update when a new composition starts, including automatic changes. The page creates a new arrangement every 32 bars and keeps generating while it is open. Browser or operating-system suspension can interrupt playback; press the button again to resume. Each listener gets their own generated music; this is not a shared live stream.
 
 ## Publish manually
 

@@ -29,3 +29,5 @@ for (const file of ['index.html', 'music.js', 'scripts/build.mjs', '.github/work
   assert(!/\/Users\/|\/home\/|DISCORD_BOT_TOKEN|api\.key\.env|gh[pousr]_[A-Za-z0-9]{20}/.test(text), `Private data in ${file}`);
 }
 console.log('PASS: source syntax, single-button interface, procedural compositions and manual-only publishing.');
+
+await import('./check-playback.mjs');

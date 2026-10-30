@@ -65,7 +65,7 @@
   const trackBpm = document.getElementById('track-bpm');
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   const view = window.createVisual(document.getElementById('scene'));
-  let analyser, samples, attached, timer, busy = false;
+  let analyser, samples, attached, timer, observedAudio, busy = false;
   let energy = 0, offset = 230, previousTime = null, frameId = null, frame = 0;
   const music = new NoirMusic(({song, playing, error}) => {
     if (playing && music.session !== attached) {
@@ -137,11 +137,33 @@
     } catch { status.textContent = 'Audio could not start. Press New Dorozhka to try again.'; button.title = status.textContent; }
     finally { busy = false; }
   });
+  function requestAutoplay() {
+    // Start immediately when the browser permits audible autoplay.
+    music.newTrack();
+    const audio = music.context;
+    if (audio) {
+      button.dataset.audioState = audio.state;
+      if (audio !== observedAudio) {
+        audio.addEventListener('statechange', () => { button.dataset.audioState = audio.state; });
+        observedAudio = audio;
+      }
+    }
+    if (audio && audio.state !== 'running') status.textContent = 'Tap anywhere to start the music.';
+  }
+  function unlockAudio(event) {
+    if (event.target.closest?.('button')) return;
+    if (event.type === 'keydown' && (event.key === 'Escape' || event.ctrlKey || event.metaKey || event.altKey)) return;
+    if (music.context?.state === 'running' && music.session) return;
+    // A gesture resumes the prepared composition rather than generating a second one.
+    if (music.song) music.start(); else requestAutoplay();
+  }
+  document.addEventListener('click', unlockAudio, {passive: true});
+  document.addEventListener('keydown', unlockAudio);
   addEventListener('resize', resize);
   reduced.addEventListener('change', animate);
   document.addEventListener('visibilitychange', animate);
   addEventListener('pagehide', () => { clearTimeout(timer); music.stop(); });
-  addEventListener('pageshow', event => { if (event.persisted) { attached = null; animate(); } });
-  resize(); animate();
+  addEventListener('pageshow', event => { if (event.persisted) { attached = null; animate(); requestAutoplay(); } });
+  resize(); animate(); requestAutoplay();
 })();
 </script></body></html>
