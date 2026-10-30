@@ -1,7 +1,7 @@
 # Radio Dorozhka
 
 - Keep this application independent of the original material-selection site and Discord bot.
-- Preserve the minimal interface: black background, a jagged audio line, one New Track button, and commit identification in the top-left corner.
+- Preserve the minimal interface: black background, the selected Dust particle line moving continuously upward, one New Track button at the bottom-right clear of the line, and commit identification in the top-left corner.
 - Keep audio at the fixed level in `music.js`. Do not add volume controls, extra buttons, or descriptive panels unless requested.
 - Edit `index.html` and `music.js` as sources. `node scripts/build.mjs` produces one self-contained `dist/index.html` with the current Git commit count and hash.
 - Use a dedicated working branch. Keep documentation and code comments in English.
