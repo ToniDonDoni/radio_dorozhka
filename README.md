@@ -4,7 +4,7 @@ A black page with an upward-flowing jagged line made of fine particles, one **Ne
 
 ## Listen
 
-Press **New Track** once to enable sound. Browsers require a user gesture before playing audio. Press it again to generate a different composition. The page creates a new arrangement every 32 bars and keeps generating while it is open. Browser or operating-system suspension can interrupt playback; press the button again to resume. Each listener gets their own generated music; this is not a shared live stream.
+Press **New Track** once to enable sound. Browsers require a user gesture before playing audio. Press it again to generate a different composition. Its profile name and BPM appear as two subtle lines above the button and update when a new composition starts, including automatic changes. The page creates a new arrangement every 32 bars and keeps generating while it is open. Browser or operating-system suspension can interrupt playback; press the button again to resume. Each listener gets their own generated music; this is not a shared live stream.
 
 ## Publish manually
 
