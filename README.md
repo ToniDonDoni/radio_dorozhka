@@ -10,10 +10,10 @@ Press **New Track** once to enable sound. Browsers require a user gesture before
 
 1. Open this repository on GitHub and select **Actions**.
 2. Select **Publish to GitHub Pages**.
-3. Click **Run workflow**, choose the branch to publish, and confirm **Run workflow**.
+3. Click **Run workflow**, select the **main** branch, and confirm **Run workflow**.
 4. Wait for both jobs to finish. The deployment job and the repository's **Settings → Pages** show the public URL.
 
-Publishing runs only when manually requested. A push does not publish the site. GitHub Pages must use **GitHub Actions** as its source under **Settings → Pages**. The initial repository setup configures this setting.
+Publishing runs only when manually requested. A push does not publish the site. GitHub Pages must use **GitHub Actions** as its source under **Settings → Pages**. The initial repository setup configures this setting. The `github-pages` environment permits deployment from `main`; merge or fast-forward source changes into `main` before publishing.
 
 The workflow checks out the selected commit with full history and embeds `#<commit-count> · <short-hash>` into the page. The full commit hash is also in the HTML metadata and the identifier's tooltip. Each build contains its own identification; no live GitHub API requests or caching service worker can change it afterward.
 
